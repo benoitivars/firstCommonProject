@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+</head>
+<body>
+    <header>
+        <div class = "header-container">
+            <p class="logo">BE<span class="spanMovie">MOVIES</span></p>
+            <nav class="menu">
+                <ul>
+                    <li><a href="javascript:void(0)" class="search">Search</a></li>
+                    <li><a href="javascript:void(0)" class="latest">Latest</a></li>
+                    <li><a href="javascript:void(0)" class="genre">Genre</a></li>
+                    <li><a href="javascript:void(0)" class="register">Register</a></li>
+                    <li><a href="javascript:void(0)" class="signin">Signin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class ="main-container">
+            <form id="movieSearcher">
+                <input type="text" id="searchInput" placeholder="Rechercher un film">
+                <button  id="buttonSearch" type="submit">
+                    <img src="images/flechesearch.svg" alt="arrow" style="width: 50%;">
+                </button>
+            </form>
+            <div>
+                <div class="swiper1">
+                    <p id="adaptative1">Results for <span>""</span></p>
+                    <div class="swiper" id="s1">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="swiper2">
+                    <p>Latest releases</p>
+                    <div class="swiper" id="s2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="swiper3">
+                    <div class="sub-swip">
+                        <p>Movies by genre</p>
+<nav class="genres">
+    <ul>
+        <li><a href="javascript:void(0)" class="comedy">Comedy</a></li>
+        <li><a href="javascript:void(0)" class="drama">Drama</a></li>
+        <li><a href="javascript:void(0)" class="action">Action</a></li>
+        <li><a href="javascript:void(0)" class="romance">Romance</a></li>
+        <li><a href="javascript:void(0)" class="fantasy">Fantasy</a></li>
+        <li><a href="javascript:void(0)" class="animation">Animation</a></li>
+    </ul>
+</nav>
+                        <div id="barre"></div>
+                    </div>
+                    <p id="adaptative2"></p>
+                        <div class="swiper" id="s3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">Slide 1</div>
+                                <div class="swiper-slide">Slide 2</div>
+                                <div class="swiper-slide">Slide 3</div>
+                                <div class="swiper-slide">Slide 4</div>
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class ="footer-container">
+            <p class="logo">BE<span class="spanMovie">MOVIES</span></p>
+            <nav class="menu">
+                <ul>
+                    <li><a href="javascript:void(0)" class="search">Search</a></li>
+                    <li><a href="javascript:void(0)" class="latest">Latest</a></li>
+                    <li><a href="javascript:void(0)" class="genre">Genre</a></li>
+                    <li><a href="javascript:void(0)" class="register">Register</a></li>
+                    <li><a href="javascript:void(0)" class="signin">Signin</a></li>
+                </ul>
+            </nav>
+            <p id="legal">@2023 - All rights reserved</p>
+        </div>
+    </footer>
+  <!-- Ajout des modaux et du voile gris -->
+  
+  <!-- Modal Grey (Voile gris) -->
+  <div id="modalGrey" class="modal"></div>
+  
+<!-- Modal Register -->
+<div id="modalRegister" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" data-modal="modalRegister">
+            <img src="images/closeButton.svg" alt="Fermer">
+        </div>      
+        <div id="choice">
+            <button id="b1">Signup</button>
+            <button id="b2">Login</button>
+        </div>
+        <div id= "infoLogin">
+            <input type="text" id="searchInput1" placeholder="Username">
+            <input type="password" id="searchInput2" placeholder="Password">
+            <br>
+            <div id="checkdemerde">
+                <input type="checkbox" name="rememberMe" id="rememberMe">
+                <label id="label1" for="remeberMe">Remember me</label>
+            </div>
+            <br>
+            <button id="logIn" type="submit">LOGIN</button>
+            <a id="forgotter" href="">I forgot my password</a><br>
+            <p id="noMember">Not a member yet ? <span>Sign up</span></p>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Modal PopUp -->
+
+<div id="modalPopUp" class="modal">
+    <div class="modal-content">
+        <div class="close-modal" data-modal="modalPopUp">
+            <img src="images/closeButton.svg" alt="Fermer">
+        </div>
+        <img id="filmPoster" src="" alt="Affiche du film">
+        <div id="rightcontent">
+            <h3 class="movieH3">Titre du Film</h3>
+            <p class="release">Date de sortie: </p>
+            <div id="rating">
+                <img src="" alt="Image supplémentaire" id="redStar">
+                <h3 class="movieH3" id="rate">Note</h3>
+            </div>
+            <p class="release"></p>
+            <p id="resume">Résumé du film...</p>
+            <p id="casting">Casting...</p>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+<!-- Slider main container -->
+
+
+
+
+
