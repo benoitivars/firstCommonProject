@@ -8,7 +8,7 @@
 
 img {
   width: 100%;
-}
+} 
 
 ul {
   list-style: none;
@@ -70,9 +70,9 @@ input {
   justify-content: center;
 }
 
-img {
+.form img{
   width: 50%;
-}
+} 
 
 /* MENU */
 
@@ -128,12 +128,14 @@ img {
 
 /* STYLES FOR SWIPERS P */
 
-.swiper1 p, .swiper2 p, .swiper3 p {
+ .swiper1 p, .swiper2 p, .swiper3 p {
   color: #fff;
   font-family: 'Inria Sans', sans-serif;
   font-size: 14px;
   font-weight: 300;
 }
+
+
 
 
 /*STYLES DES SWIPERS*/
@@ -152,6 +154,9 @@ img {
   margin-bottom: 109px;
 }
 
+ .swiper-slide img{
+  height: 351px;
+} 
 
 
 /* COMMON HEADER & FOOTER STYLES */
@@ -168,7 +173,7 @@ img {
 /* MAIN CONTAINER */
 
 .main-container {
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
@@ -222,10 +227,9 @@ footer p {
 /* STYLES CARROUSEL */
 
 .swiper-slide {
-  width: 234px;
+ 
   height: 351px;
-  background-size: cover;
-  background-position: center;
+ 
 }
 
 .swiper-button-next {
