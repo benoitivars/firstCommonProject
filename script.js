@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     // Initialize Swiper instances
     initializeSwipers();
-    
     // Set up modal event listeners
     setupModalEvents();
   });
