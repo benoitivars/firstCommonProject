@@ -65,10 +65,10 @@
 </nav>
                         <div id="barre"></div>
                     </div>
-                    <p id="adaptative2"></p>
+                    <p id="adaptative2">Comedy</p>
                    
                         <div class="swiper s3" >
-                            <div class="swiper-wrapper">
+                            <div class="swiper-wrapper swiper-wrapper3">
                                
                             </div>
                             
@@ -95,58 +95,76 @@
             <p id="legal">@2023 - All rights reserved</p>
         </div>
     </footer>
-  <!-- Ajout des modaux et du voile gris -->
   
-  <!-- Modal Grey (Voile gris) -->
-  <div id="modalGrey" class="modal"></div>
   
-<!-- Modal Register -->
-<div id="modalRegister" class="modal">
-    <div class="modal-content">
-        <div class="close-modal" data-modal="modalRegister">
-            <img src="images/closeButton.svg" alt="Fermer">
-        </div>      
-        <div id="choice">
-            <button id="b1">Signup</button>
-            <button id="b2">Login</button>
-        </div>
-        <div id= "infoLogin">
-            <input type="text" id="searchInput1" placeholder="Username">
-            <input type="password" id="searchInput2" placeholder="Password">
-            <br>
-            <div id="checkdemerde">
-                <input type="checkbox" name="rememberMe" id="rememberMe">
-                <label id="label1" for="remeberMe">Remember me</label>
-            </div>
-            <br>
-            <button id="logIn" type="submit">LOGIN</button>
-            <a id="forgotter" href="">I forgot my password</a><br>
-            <p id="noMember">Not a member yet ? <span>Sign up</span></p>
-        </div>
+<!------------- Modal Register ------------->
+<dialog class="modalRegister">
+    <img src="images/closeButton.svg" alt="" class="closeModal">
+   
+    <nav class="navModal">
+      
+      <button class="buttonSwitchSignup">SIGN UP</button>
+      <button class="buttonSwitchLogin">LOGIN</button>
+    </nav>
+    <div class="formRegister">
+      <input type="text" name="username" id="username" placeholder="Username">
+      <input type="text" name="password" id="password" placeholder="password">
+      <input type="text" name="passwordConfirm" id="passwordConfirm" placeholder="Confirm your password">
+      <br>
+      <button type="submit" class="buttonSignin">SIGN IN</button>
+      <p class="alreadyMember">Already a member? <span class="login"><a href="#">Log in</a></span></p>
     </div>
-  </div>
-  
-  <!-- Modal PopUp -->
 
-<div id="modalPopUp" class="modal">
-    <div class="modal-content">
-        <div class="close-modal" data-modal="modalPopUp">
-            <img src="images/closeButton.svg" alt="Fermer">
-        </div>
-        <img id="filmPoster" src="" alt="Affiche du film">
-        <div id="rightcontent">
-            <h3 class="movieH3">Titre du Film</h3>
-            <p class="release">Date de sortie: </p>
-            <div id="rating">
-                <img src="" alt="Image supplémentaire" id="redStar">
-                <h3 class="movieH3" id="rate">Note</h3>
-            </div>
-            <p class="release"></p>
-            <p id="resume">Résumé du film...</p>
-            <p id="casting">Casting...</p>
-        </div>
+    <div class="formLogin">
+
+
+    <input type="text" name="username" id="username" placeholder="Username">
+    <input type="text" name="password" id="password" placeholder="Password">
+    <br>
+    <input type="checkbox" id="remember" name="remember" value="remember">
+    <label for="remember" class="rememberMe"> Remember me</label>
+    <br>
+    <button type="submit" class="buttonLogin">LOGIN</button>
+    <p class="forgotPassword"><a href="#" >I forgot my password</a></p>
+    <p class="notAMember">Not a member yet ? <span class="signup"><a href="#">Sign up</a></span></p>
+
     </div>
-</div>
+    
+
+   
+
+  </dialog>
+
+  
+
+<!-----------modal movies------------ -->
+
+<dialog class="modalMovies">
+
+    <img src="images/closeButton.svg" alt="close" class="closeModalMovies">
+
+    <div class="movieCard">
+      <div class="divImg">
+      <img src="" alt="" class="imgMovieModal">
+    </div>
+      <div class="movieCardText">
+        <p class="titleCard"></p>
+        <p class="yearCard"></p>
+        <div class="divRate">
+        <img src="images/StarRed.svg" alt="Rate" class="imgStar"><p class="rateCard"></p>
+        </div>
+        <p class="genreCard"></p>
+        <p class="resumeCard"></p>
+        <br>
+        <br>
+        <p class="castList">CAST :      <span class="castCard"></span></p>
+        
+      </div>
+
+
+    </div>
+
+</dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="script.js"></script>

@@ -16,6 +16,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 /* FONTS */
@@ -256,99 +257,34 @@ footer p {
   /* Styles pour les écrans d'ordinateur */
 }
 
-/* Voile gris */
-#modalGrey {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(128, 128, 128, 0.5); /* Gris plus clair */
-  z-index: 1;
-}
 
-/* Style général des modaux */
-.modal {
-  display: none;  /* Ce sera changé en 'flex' via JavaScript */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Style spécifique pour #modalRegister */
-#modalRegister {
-  z-index: 2;
+
+/* -----------------------MODAL REGISTER */
+
+.modalRegister {
+  margin: auto;
   width: 410px;
   height: 608px;
-  background: #000;
-  padding: 20px 61px;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center;
+  background-color: #000;
+  padding-top: 66px;
+  padding-left: 61px;
+  position: fixed;
+
 }
 
-
-
-/* Styles pour les boutons de signup et login */
-.modal-content .button {
-  display: inline-block;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
+.formRegister {
+  display: none;
 }
 
-#modalRegister #choice {
+.navModal {
   display: flex;
+  width: 288px;
+  height: 54px;
   margin-bottom: 54px;
 }
 
-#searchInput1 {
-margin-bottom: 25px;
-}
-
-#searchInput2 {
-  margin-bottom: 22px;
-}
-
-
-#modalRegister #choice #b1 {
-  width: 146px;
-  height: 54px;
-  flex-shrink: 0;
-  font-family: Inria Sans;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.72px;
-  text-transform: uppercase;
-  border-radius: 8px 0px 0px 8px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  box-shadow: none;
-  padding: 0; 
-  margin: 0; 
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  color: #FFF;
-  border: solid white;
-  border-width: 1px 0px 1px 1px;
-}
-
-#modalRegister #choice #b2 {
-  width: 146px;
-  height: 54px;
-  flex-shrink: 0;
-  border-radius: 0px 8px 8px 0px;
-  background: #C00;
+.navModal button {
   color: #FFF;
   font-family: Inria Sans;
   font-size: 24px;
@@ -357,41 +293,35 @@ margin-bottom: 25px;
   line-height: normal;
   letter-spacing: 0.72px;
   text-transform: uppercase;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  box-shadow: none;
-  padding: 0; 
-  margin: 0; 
-  align-items: center;
-  justify-content: center;
-}
-
-/* Styles pour les champs de saisie */
-.modal-content input[type="text"],
-.modal-content input[type="password"] {
   width: 100%;
-  padding: 10px 15px;
-  margin-top: 20px;
-  border: 1px solid #C00;
-  border-radius: 5px;
+  background-color: #000;
+  border-style: none;
+  border: 1px solid #FFF;
 }
 
-.modal-content #infoLogin #rememberMe {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background: #FFF;
+.buttonSwitchSignup {
+  border-radius: 8px 0px 0px 8px;
 }
 
-#checkdemerde {
-  display: flex;
-  align-items: center; /* Pour l'alignement vertical */
-  margin-top: 22px;
+.buttonSwitchLogin {
+  border-radius: 0px 8px 8px 0px;
 }
 
-#label1 {
+
+.forgotPassword,
+.signup,
+.login {
+  color: #C00;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.alreadyMember,
+.rememberMe,
+.notAMember {
   color: #FFF;
   font-family: Inter;
   font-size: 16px;
@@ -400,52 +330,13 @@ margin-bottom: 25px;
   line-height: normal;
 }
 
-/* Style pour le bouton de connexion */
-.modal-content .submitButton {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background-color: #C00;
-  border: none;
-  font-family: 'Inria Sans', sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.modal-content .footer {
-  margin-top: 20px;
-}
-
-.modal-content .footer a {
-  text-decoration: none;
-  color: #C00;
-}
-
-.modal-content .close-modal {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: #FFF;
-  color: #000;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Corrections mineures */
-.close-modal img {
-  object-fit: contain;
-  position: absolute;
-}
-
-.modalRegister #b2 {
-  border-radius: 0px 8px 8px 0px;
-}
-
-#logIn {
+.buttonSignin,
+.buttonLogin {
+  width: 288px;
+  height: 47px;
+  border-radius: 8px;
+  background: #C00;
+  margin-bottom: 30px;
   color: #FFF;
   font-family: Inria Sans;
   font-size: 20px;
@@ -454,66 +345,82 @@ margin-bottom: 25px;
   line-height: normal;
   letter-spacing: 0.6px;
   text-transform: uppercase;
+}
+
+.formRegister input {
   width: 288px;
-  height: 47px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: #C00;
-/*   margin-bottom: 20px; */
-
+  height: 44px;
+  margin-bottom: 25px;
 }
 
-
-
-
-
-#noMember {
-  color: #FFF;
+#username,
+#password {
+  width: 288px;
+  height: 44px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+  color: #000;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 19px;
 }
 
-#noMember span {
-  color: #C00;
+#remember {
+  margin-bottom: 46px;
 }
 
-#forgotter:visited {
-  color: #C00; /* Couleur pour l'état visited */
-  text-decoration: none; /* Pour supprimer le soulignement */
+.forgotPassword {
+  margin-bottom: 19px;
 }
 
-#forgotter {
-  color: #C00; /* Couleur initiale */
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-decoration: none; /* Pour supprimer le soulignement */
-  margin-top: 30px;
+.closeModal {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 11px;
+  left: 14px;
 }
 
-#modalPopUp {
+
+/* -------------------MODAL MOVIES--------------- */
+
+.modalMovies {
   width: 742px;
   height: 526px;
+  margin: auto;
+  position: relative;
+  padding-top: 74px;
+  padding-left: 79px;
   background: #000;
-  padding: 74px, 79px, 49px, 79px;
+  position: fixed;
 }
 
-#filmPoster {
+.closeModalMovies {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 11px;
+  left: 14px;
+}
+
+.imgStar {
+  width: 21px;
+  height: 21px;
+}
+
+.movieCard {
+  display: flex;
+}
+
+.divImg {
   width: 234px;
   height: 351px;
-  flex-shrink: 0;
-  border: 1px solid #FFF;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
   margin-right: 58px;
 }
 
-.movieH3 {
+.titleCard {
   color: #C00;
   font-family: Inria Sans;
   font-size: 20px;
@@ -524,19 +431,7 @@ margin-bottom: 25px;
   text-transform: uppercase;
 }
 
-#rating {
-  display: flex;
-  align-items: center;
-}
-
-#redStar {
-  width: 21px;
-  height: 21px;
-  flex-shrink: 0;
-  fill: #C00;
-}
-
-.movieH3 {
+.yearCard {
   color: #E9E9E9;
   font-family: Inria Sans;
   font-size: 14px;
@@ -545,15 +440,44 @@ margin-bottom: 25px;
   line-height: normal;
   letter-spacing: 0.42px;
   text-transform: uppercase;
+  margin-bottom: 11px;
 }
 
-#casting {
-  color: #E9E9E9;
+.divRate {
+  display: flex;
+}
 
-font-family: Inria Sans;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.42px;
+.rateCard {
+  color: #C00;
+
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+
+.genreCard {
+  color: #E9E9E9;
+  font-family: Inria Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.42px;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+.resumeCard, .castList {
+  color: #FFF;
+  font-family: Inria Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 150%;
+  /* 24px */
+  letter-spacing: 0.48px;
+  width: 292px;
 }
