@@ -9,12 +9,6 @@ const options = {
 
 
 
-
-
-
-
-
-
 const swiper1 = new Swiper('#s1', {
   loop: true,
   slidesPerView: '4',
@@ -383,7 +377,7 @@ romance.addEventListener("click", () => {
           const createImg = document.createElement("img");
           createImg.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
           createDivImg.appendChild(createImg);
-          swiperWrapper3.appendChild(createDivImg); ù
+          swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
             modalMovies.showModal();
