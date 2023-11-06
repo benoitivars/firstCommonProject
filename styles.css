@@ -137,7 +137,15 @@ input {
   font-weight: 300;
 }
 
+.swiper-slide img:hover {
+  opacity: 50%;
+}
 
+.movieHover {
+  position: absolute;
+  top : 50%;
+  left: 40%;
+}
 
 
 /*STYLES DES SWIPERS*/
@@ -352,6 +360,14 @@ footer p {
   width: 288px;
   height: 44px;
   margin-bottom: 25px;
+  border-radius: 8px;
+}
+
+#username,  #password{
+  width: 288px;
+  height: 44px;
+  margin-bottom: 25px;
+  border-radius: 8px;
 }
 
 #username,
@@ -370,6 +386,9 @@ footer p {
 
 #remember {
   margin-bottom: 46px;
+  height: 18px;
+  width: 18px;
+
 }
 
 .forgotPassword {

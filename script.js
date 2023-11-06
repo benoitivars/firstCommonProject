@@ -133,6 +133,8 @@ buttonSearch.addEventListener("click", function (e) {
 
 /*  -----------------SWIPER2 */
 
+
+    /* image et modal  */
 fetch('https://api.themoviedb.org/3/movie/now_playing', options)
   .then(response => response.json())
   .then(data => {
@@ -147,6 +149,28 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
         createDivImg.appendChild(createImg);
         swiperWrapper2.appendChild(createDivImg);
 
+
+        /* creer une div dans la createDivImg avec le texte le rendre visible en hover et faire le style en css */
+
+        /* hover */
+
+        const createDiv = document.createElement("div");
+        const createP = document.createElement("p");
+        createP.innerText=result.title;
+        createDiv.appendChild(createP);
+        createDiv.className = "movieHover";
+        createDivImg.appendChild(createDiv);
+
+        createDivImg.addEventListener('mouseover', () => {
+  createDiv.style.display = "block";
+});
+
+createDivImg.addEventListener('mouseout', () => {
+  createDiv.style.display = "none";
+});
+        
+
+
         createDivImg.addEventListener('click', () => {
           modalMovies.showModal();
           imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
@@ -154,6 +178,8 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
           yearCard.innerText = result.release_date.substring(0, 4);
           rateCard.innerText = result.vote_average;
           resumeCard.innerText = result.overview;
+
+        
 
           fetch(`https://api.themoviedb.org/3/movie/${result.id}?language=en-US&append_to_response=credits`, options)
             .then(response => response.json())
@@ -169,6 +195,9 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
             .catch(err => {
               console.error(err);
             });
+
+      
+
         });
       }
     });
@@ -558,7 +587,7 @@ animation.addEventListener("click", () => {
       console.error(err);
     });
 
-});
+}); 
 
 /*------------------- MODAL -----------------------------*/
 const modalRegister = document.querySelector(".modalRegister");
