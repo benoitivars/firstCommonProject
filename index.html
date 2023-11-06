@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
-</head> 
+</head>
+
 <body>
     <header>
-        <div class = "header-container">
+        <div class="header-container">
             <p class="logo">BE<span class="spanMovie">MOVIES</span></p>
             <nav class="menu">
                 <ul>
@@ -23,10 +25,10 @@
         </div>
     </header>
     <main>
-        <div class ="main-container">
+        <div class="main-container">
             <form id="movieSearcher">
                 <input type="text" id="searchInput" placeholder="Rechercher un film">
-                <button  id="buttonSearch" type="submit">
+                <button id="buttonSearch" type="submit">
                     <img src="images/flechesearch.svg" alt="arrow" style="width: 50%;">
                 </button>
             </form>
@@ -44,7 +46,7 @@
                     <p>Latest releases</p>
                     <div class="swiper" id="s2">
                         <div class="swiper-wrapper swiper-wrapper2">
-                            
+
                         </div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
@@ -53,123 +55,125 @@
                 <div class="swiper3">
                     <div class="sub-swip">
                         <p>Movies by genre</p>
-<nav class="genres">
-    <ul>
-        <li><a href="javascript:void(0)" class="comedy">Comedy</a></li>
-        <li><a href="javascript:void(0)" class="drama">Drama</a></li>
-        <li><a href="javascript:void(0)" class="action">Action</a></li>
-        <li><a href="javascript:void(0)" class="romance">Romance</a></li>
-        <li><a href="javascript:void(0)" class="fantasy">Fantasy</a></li>
-        <li><a href="javascript:void(0)" class="animation">Animation</a></li>
-    </ul>
-</nav>
+                        <nav class="genres">
+                            <ul>
+                                <li><a href="javascript:void(0)" class="comedy">Comedy</a></li>
+                                <li><a href="javascript:void(0)" class="drama">Drama</a></li>
+                                <li><a href="javascript:void(0)" class="action">Action</a></li>
+                                <li><a href="javascript:void(0)" class="romance">Romance</a></li>
+                                <li><a href="javascript:void(0)" class="fantasy">Fantasy</a></li>
+                                <li><a href="javascript:void(0)" class="animation">Animation</a></li>
+                            </ul>
+                        </nav>
                         <div id="barre"></div>
                     </div>
                     <p id="adaptative2">Comedy</p>
-                   
-                        <div class="swiper s3" >
-                            <div class="swiper-wrapper swiper-wrapper3">
-                               
-                            </div>
-                            
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
+
+                    <div class="swiper s3">
+                        <div class="swiper-wrapper swiper-wrapper3">
+
                         </div>
-                    
+
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <div class ="footer-container">
+        <div class="footer-container">
             <p class="logo">BE<span class="spanMovie">MOVIES</span></p>
             <nav class="menu">
                 <ul>
                     <li><a href="javascript:void(0)" class="search">Search</a></li>
                     <li><a href="javascript:void(0)" class="latest">Latest</a></li>
                     <li><a href="javascript:void(0)" class="genre">Genre</a></li>
-                    <li><a href="javascript:void(0)" class="register">Register</a></li>
-                    <li><a href="javascript:void(0)" class="signin">Signin</a></li>
+                    <li><a href="javascript:void(0)" class="register2">Register</a></li>
+                    <li><a href="javascript:void(0)" class="signin2">Signin</a></li>
                 </ul>
             </nav>
             <p id="legal">@2023 - All rights reserved</p>
         </div>
     </footer>
-  
-  
-<!------------- Modal Register ------------->
-<dialog class="modalRegister">
-    <img src="images/closeButton.svg" alt="" class="closeModal">
-   
-    <nav class="navModal">
-      
-      <button class="buttonSwitchSignup">SIGN UP</button>
-      <button class="buttonSwitchLogin">LOGIN</button>
-    </nav>
-    <div class="formRegister">
-      <input type="text" name="username" id="username" placeholder="Username">
-      <input type="text" name="password" id="password" placeholder="password">
-      <input type="text" name="passwordConfirm" id="passwordConfirm" placeholder="Confirm your password">
-      <br>
-      <button type="submit" class="buttonSignin">SIGN IN</button>
-      <p class="alreadyMember">Already a member? <span class="login"><a href="#">Log in</a></span></p>
-    </div>
-
-    <div class="formLogin">
 
 
-    <input type="text" name="username" id="username" placeholder="Username">
-    <input type="text" name="password" id="password" placeholder="Password">
-    <br>
-    <input type="checkbox" id="remember" name="remember" value="remember">
-    <label for="remember" class="rememberMe"> Remember me</label>
-    <br>
-    <button type="submit" class="buttonLogin">LOGIN</button>
-    <p class="forgotPassword"><a href="#" >I forgot my password</a></p>
-    <p class="notAMember">Not a member yet ? <span class="signup"><a href="#">Sign up</a></span></p>
+    <!------------- Modal Register ------------->
+    <dialog class="modalRegister">
+        <img src="images/closeButton.svg" alt="" class="closeModal">
 
-    </div>
-    
+        <nav class="navModal">
 
-   
-
-  </dialog>
-
-  
-
-<!-----------modal movies------------ -->
-
-<dialog class="modalMovies">
-
-    <img src="images/closeButton.svg" alt="close" class="closeModalMovies">
-
-    <div class="movieCard">
-      <div class="divImg">
-      <img src="" alt="" class="imgMovieModal">
-    </div>
-      <div class="movieCardText">
-        <p class="titleCard"></p>
-        <p class="yearCard"></p>
-        <div class="divRate">
-        <img src="images/StarRed.svg" alt="Rate" class="imgStar"><p class="rateCard"></p>
+            <button class="buttonSwitchSignup">SIGN UP</button>
+            <button class="buttonSwitchLogin">LOGIN</button>
+        </nav>
+        <div class="formRegister">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="text" name="password" id="password" placeholder="password">
+            <input type="text" name="passwordConfirm" id="passwordConfirm" placeholder="Confirm your password">
+            <br>
+            <button type="submit" class="buttonSignin">SIGN IN</button>
+            <p class="alreadyMember">Already a member? <span class="login"><a href="#">Log in</a></span></p>
         </div>
-        <p class="genreCard"></p>
-        <p class="resumeCard"></p>
-        <br>
-        <br>
-        <p class="castList">CAST :      <span class="castCard"></span></p>
-        
-      </div>
+
+        <div class="formLogin">
 
 
-    </div>
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="text" name="password" id="password" placeholder="Password">
+            <br>
+            <input type="checkbox" id="remember" name="remember" value="remember">
+            <label for="remember" class="rememberMe"> Remember me</label>
+            <br>
+            <button type="submit" class="buttonLogin">LOGIN</button>
+            <p class="forgotPassword"><a href="#">I forgot my password</a></p>
+            <p class="notAMember">Not a member yet ? <span class="signup"><a href="#">Sign up</a></span></p>
 
-</dialog>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+
+
+    </dialog>
+
+
+
+    <!-----------modal movies------------ -->
+
+    <dialog class="modalMovies">
+
+        <img src="images/closeButton.svg" alt="close" class="closeModalMovies">
+
+        <div class="movieCard">
+            <div class="divImg">
+                <img src="" alt="" class="imgMovieModal">
+            </div>
+            <div class="movieCardText">
+                <p class="titleCard"></p>
+                <p class="yearCard"></p>
+                <div class="divRate">
+                    <img src="images/StarRed.svg" alt="Rate" class="imgStar">
+                    <p class="rateCard"></p>
+                </div>
+                <p class="genreCard"></p>
+                <p class="resumeCard"></p>
+                <br>
+                <br>
+                <p class="castList">CAST : <span class="castCard"></span></p>
+
+            </div>
+
+
+        </div>
+
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
-  
+
 </body>
+
 </html>
 
 
@@ -177,8 +181,3 @@
 
 
 <!-- Slider main container -->
-
-
-
-
-

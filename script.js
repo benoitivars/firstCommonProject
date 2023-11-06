@@ -9,15 +9,6 @@ const options = {
 
 
 
-const swiper1 = new Swiper('#s1', {
-  loop: true,
-  slidesPerView: '4',
-  spaceBetween: 19,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
 
 const swiper2 = new Swiper('#s2', {
   loop: true,
@@ -29,15 +20,7 @@ const swiper2 = new Swiper('#s2', {
   },
 });
 
-const swiper3 = new Swiper('.s3', {
-  loop: true,
-  slidesPerView: '4',
-  spaceBetween: 19,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
+
 
 /* ---------------const modal movie----- */
 
@@ -87,7 +70,10 @@ function displayMovieInfo(result, imgSrcMovie) {
 
 const buttonSearch = document.querySelector('#buttonSearch')
 buttonSearch.addEventListener("click", function (e) {
+  
   e.preventDefault();
+
+  
 
   const searchInput = document.querySelector("#searchInput");
   const swiperWrapper1 = document.querySelector(".swiper-wrapper1");
@@ -101,7 +87,15 @@ buttonSearch.addEventListener("click", function (e) {
   fetch(`https://api.themoviedb.org/3/search/movie?query=${searchInputValue}&include_adult=false&language=en-US&page=1`, options)
     .then(response => response.json())
     .then(data => {
-
+      const swiper1 = new Swiper('#s1', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -193,15 +187,28 @@ const romance = document.querySelector(".romance");
 const fantasy = document.querySelector(".fantasy");
 const animation = document.querySelector(".animation");
 const swiperWrapper3 = document.querySelector(".swiper-wrapper3");
-const adaptative2 = document.querySelector("#adaptative2")
+const adaptative2 = document.querySelector("#adaptative2");
+
+const swiper3 = new Swiper('.s3', {
+  loop: true,
+  slidesPerView: '4',
+  spaceBetween: 19,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
 
 
 
 /* fetch comedy */
 
 fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35', options)
+
   .then(response => response.json())
   .then(data => {
+   
+    
     data.results.forEach(result => {
       const imgSrcMovie = result.poster_path;
       if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -238,9 +245,20 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 comedy.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Comedy";
+ 
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35', options)
     .then(response => response.json())
     .then(data => {
+   
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -280,11 +298,26 @@ comedy.addEventListener("click", () => {
 
 
 drama.addEventListener("click", () => {
+  
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Drama";
+
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=18', options)
+  
     .then(response => response.json())
+    
     .then(data => {
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -308,10 +341,9 @@ drama.addEventListener("click", () => {
 
           });
         }
+       
       });
-
-
-
+     
     })
     .catch(err => {
       console.error(err);
@@ -324,9 +356,20 @@ drama.addEventListener("click", () => {
 action.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Action";
+ 
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28', options)
     .then(response => response.json())
     .then(data => {
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -365,9 +408,20 @@ action.addEventListener("click", () => {
 romance.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Romance";
+ 
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10749', options)
     .then(response => response.json())
     .then(data => {
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -406,9 +460,20 @@ romance.addEventListener("click", () => {
 fantasy.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Fantasy";
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=14', options)
     .then(response => response.json())
     .then(data => {
+     
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -447,9 +512,20 @@ fantasy.addEventListener("click", () => {
 animation.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Animation";
+ 
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16', options)
     .then(response => response.json())
     .then(data => {
+    
+      const swiper3 = new Swiper('.s3', {
+        loop: true,
+        slidesPerView: '4',
+        spaceBetween: 19,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -487,7 +563,9 @@ animation.addEventListener("click", () => {
 /*------------------- MODAL -----------------------------*/
 const modalRegister = document.querySelector(".modalRegister");
 const registerBtnMenu = document.querySelector(".register");
-const signinBtnMenu = document.querySelector(".signin")
+const signinBtnMenu = document.querySelector(".signin");
+const registerBtnMenu2 = document.querySelector(".register2");
+const signinBtnMenu2 = document.querySelector(".signin2");
 const closeModal = document.querySelector(".closeModal");
 const closeModalMovies = document.querySelector(".closeModalMovies");
 const buttonSwitchSignup = document.querySelector(".buttonSwitchSignup");
@@ -498,6 +576,17 @@ const formLogin = document.querySelector(".formLogin");
 const login = document.querySelector(".login");
 
 registerBtnMenu.addEventListener("click", () => {
+  modalRegister.showModal();
+  buttonSwitchSignup.style.backgroundColor = "#C00";
+  buttonSwitchLogin.style.backgroundColor = "black";
+  buttonSwitchSignup.style.borderColor = "#C00";
+  buttonSwitchLogin.style.borderColor = "white";
+  buttonSwitchLogin.style.borderWidth = "1px 1px 1px 0px";
+  formLogin.style.display = "none";
+  formRegister.style.display = "block";
+});
+
+registerBtnMenu2.addEventListener("click", () => {
   modalRegister.showModal();
   buttonSwitchSignup.style.backgroundColor = "#C00";
   buttonSwitchLogin.style.backgroundColor = "black";
@@ -519,6 +608,17 @@ buttonSwitchSignup.addEventListener("click", () => {
 });
 
 signinBtnMenu.addEventListener("click", () => {
+  modalRegister.showModal();
+  buttonSwitchLogin.style.backgroundColor = "#C00";
+  buttonSwitchSignup.style.backgroundColor = "black";
+  buttonSwitchLogin.style.borderColor = "#C00";
+  buttonSwitchSignup.style.borderColor = "white";
+  buttonSwitchSignup.style.borderWidth = "1px 0px 1px 1px";
+  formLogin.style.display = "block";
+  formRegister.style.display = "none";
+});
+
+signinBtnMenu2.addEventListener("click", () => {
   modalRegister.showModal();
   buttonSwitchLogin.style.backgroundColor = "#C00";
   buttonSwitchSignup.style.backgroundColor = "black";

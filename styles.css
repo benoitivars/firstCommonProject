@@ -39,9 +39,10 @@ a {
 
 /* FORM */
 
-form {
+#movieSearcher{
   display: flex;
-
+  align-items: center;
+  justify-content: center;
 }
 
 input {
