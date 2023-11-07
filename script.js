@@ -22,7 +22,7 @@ const swiper2 = new Swiper('#s2', {
 
 
 
-/* ---------------const modal movie----- */
+/* ---------------const et fonction modal movie----- */
 
 const titleCard = document.querySelector(".titleCard");
 const yearCard = document.querySelector(".yearCard");
@@ -33,7 +33,6 @@ const castCard = document.querySelector(".castCard");
 const modalMovies = document.querySelector(".modalMovies");
 const imgMovieModal = document.querySelector(".imgMovieModal");
 
-/* FETCH GENRE */
 
 function displayMovieInfo(result, imgSrcMovie) {
 
@@ -51,8 +50,8 @@ function displayMovieInfo(result, imgSrcMovie) {
       const genreNames = movieData.genres.map(genre => genre.name);
       genreCard.innerText = genreNames.join(', ');
 
-      // Obtenir les acteurs principaux (les 5 premiers)
-      const topActors = movieData.credits.cast.slice(0, 5); // Les 5 premiers acteurs
+      /* acteurs principaux (les 5 premiers) */
+      const topActors = movieData.credits.cast.slice(0, 5); 
       const actorsText = topActors.map(actor => actor.name).join(', ');
       castCard.innerText = actorsText;
     })
@@ -70,10 +69,8 @@ function displayMovieInfo(result, imgSrcMovie) {
 
 const buttonSearch = document.querySelector('#buttonSearch')
 buttonSearch.addEventListener("click", function (e) {
-  
-  e.preventDefault();
 
-  
+  e.preventDefault();
 
   const searchInput = document.querySelector("#searchInput");
   const swiperWrapper1 = document.querySelector(".swiper-wrapper1");
@@ -107,15 +104,9 @@ buttonSearch.addEventListener("click", function (e) {
           swiperWrapper1.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
+          
 
             displayMovieInfo(result, imgSrcMovie);
-
 
           });
         }
@@ -134,7 +125,7 @@ buttonSearch.addEventListener("click", function (e) {
 /*  -----------------SWIPER2 */
 
 
-    /* image et modal  */
+/* image et modal  */
 fetch('https://api.themoviedb.org/3/movie/now_playing', options)
   .then(response => response.json())
   .then(data => {
@@ -145,60 +136,82 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
         const createDivImg = document.createElement("div");
         createDivImg.className = "swiper-slide";
         const createImg = document.createElement("img");
-        createImg.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
+ 
         createDivImg.appendChild(createImg);
         swiperWrapper2.appendChild(createDivImg);
 
+        
+        /* HOVER */
 
-        /* creer une div dans la createDivImg avec le texte le rendre visible en hover et faire le style en css */
-
-        /* hover */
 
         const createDiv = document.createElement("div");
-        const createP = document.createElement("p");
-        createP.innerText=result.title;
-        createDiv.appendChild(createP);
-        createDiv.className = "movieHover";
-        createDivImg.appendChild(createDiv);
 
+        
         createDivImg.addEventListener('mouseover', () => {
-  createDiv.style.display = "block";
-});
-
-createDivImg.addEventListener('mouseout', () => {
-  createDiv.style.display = "none";
-});
+          
         
+          createDiv.innerHTML ="";
 
+          const createPTitle = document.createElement("p");
+          createPTitle.innerText = result.title;
+          createPTitle.className="titleHover";
+          createDiv.appendChild(createPTitle);
+          
 
-        createDivImg.addEventListener('click', () => {
-          modalMovies.showModal();
-          imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-          titleCard.innerText = result.title;
-          yearCard.innerText = result.release_date.substring(0, 4);
-          rateCard.innerText = result.vote_average;
-          resumeCard.innerText = result.overview;
+          
+          const createPYear = document.createElement("p");
+          createPYear.innerText = result.release_date.substring(0, 4);
+          createPYear.className="yearHover";
+          createDiv.appendChild(createPYear);
+          
 
-        
-
-          fetch(`https://api.themoviedb.org/3/movie/${result.id}?language=en-US&append_to_response=credits`, options)
-            .then(response => response.json())
-            .then(movieData => {
-              const genreNames = movieData.genres.map(genre => genre.name);
-              genreCard.innerText = genreNames.join(', ');
-
-              // Obtenir les acteurs principaux (les 5 premiers)
-              const topActors = movieData.credits.cast.slice(0, 5); // Les 5 premiers acteurs
-              const actorsText = topActors.map(actor => actor.name).join(', ');
-              castCard.innerText = actorsText;
-            })
-            .catch(err => {
-              console.error(err);
-            });
-
+          /* fetch(`https://api.themoviedb.org/3/movie/${result.id}?language=en-US&append_to_response=credits`, options)
+          .then(response => response.json())
+          .then(movieData => {
+            if (createDiv.querySelector(".genreHover")) {
+              // Vérifier si l'élément de genre existe déjà
+              return;
+            }
+            const createPGenre = document.createElement("p");
+            const genreNames = movieData.genres.map(genre => genre.name);
+            createPGenre.innerText = genreNames.join(', ');
+            createPGenre.className = "genreHover";
+            
+            createDiv.appendChild(createPGenre);
+          })
+          .catch(err => {
+            console.error(err);
+          }); */
       
+       
 
+        const createImgHover = document.createElement("img");
+        createImgHover.src = "images/StarRed.svg";
+        createImgHover.style.width="35px";
+        createImgHover.style.height="35px";
+        createDiv.appendChild(createImgHover);
+
+        const createPRate = document.createElement("p");
+        createPRate.innerText = result.vote_average.toFixed(1);
+        createPRate.className="rateHover";
+        createDiv.appendChild(createPRate);
+        
+
+          
+          
+        createDivImg.appendChild(createDiv);
+          createDiv.className = "movieHover";
+          createDiv.style.display = "block";
         });
+
+        createDivImg.addEventListener('mouseout', () => {
+          createDiv.style.display = "none";
+        });
+
+        createDiv.addEventListener('click', () => {
+          displayMovieInfo(result, imgSrcMovie);
+        });
+        
       }
     });
   })
@@ -236,8 +249,8 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 
   .then(response => response.json())
   .then(data => {
-   
-    
+
+
     data.results.forEach(result => {
       const imgSrcMovie = result.poster_path;
       if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -250,15 +263,7 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
         swiperWrapper3.appendChild(createDivImg);
 
         createDivImg.addEventListener('click', () => {
-          modalMovies.showModal();
-          imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-          titleCard.innerText = result.title;
-          yearCard.innerText = result.release_date.substring(0, 4);
-          rateCard.innerText = result.vote_average;
-          resumeCard.innerText = result.overview;
-
           displayMovieInfo(result, imgSrcMovie);
-
         });
 
       }
@@ -274,11 +279,11 @@ fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_v
 comedy.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Comedy";
- 
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35', options)
     .then(response => response.json())
     .then(data => {
-   
+
       const swiper3 = new Swiper('.s3', {
         loop: true,
         slidesPerView: '4',
@@ -300,15 +305,7 @@ comedy.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
-
             displayMovieInfo(result, imgSrcMovie);
-
           });
         }
       });
@@ -327,15 +324,15 @@ comedy.addEventListener("click", () => {
 
 
 drama.addEventListener("click", () => {
-  
+
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Drama";
 
 
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=18', options)
-  
+
     .then(response => response.json())
-    
+
     .then(data => {
       const swiper3 = new Swiper('.s3', {
         loop: true,
@@ -346,7 +343,7 @@ drama.addEventListener("click", () => {
           prevEl: '.swiper-button-prev',
         },
       });
-      
+
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -359,20 +356,12 @@ drama.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
-
             displayMovieInfo(result, imgSrcMovie);
-
           });
         }
-       
+
       });
-     
+
     })
     .catch(err => {
       console.error(err);
@@ -385,7 +374,7 @@ drama.addEventListener("click", () => {
 action.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Action";
- 
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28', options)
     .then(response => response.json())
     .then(data => {
@@ -398,7 +387,7 @@ action.addEventListener("click", () => {
           prevEl: '.swiper-button-prev',
         },
       });
-      
+
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -411,15 +400,7 @@ action.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
-
             displayMovieInfo(result, imgSrcMovie);
-
           });
         }
       });
@@ -437,7 +418,7 @@ action.addEventListener("click", () => {
 romance.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Romance";
- 
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10749', options)
     .then(response => response.json())
     .then(data => {
@@ -450,7 +431,7 @@ romance.addEventListener("click", () => {
           prevEl: '.swiper-button-prev',
         },
       });
-      
+
       data.results.forEach(result => {
         const imgSrcMovie = result.poster_path;
         if (imgSrcMovie) { /* s'assurer qu'il y a bien une image*/
@@ -463,15 +444,7 @@ romance.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
-
             displayMovieInfo(result, imgSrcMovie);
-
           });
         }
       });
@@ -493,7 +466,7 @@ fantasy.addEventListener("click", () => {
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=14', options)
     .then(response => response.json())
     .then(data => {
-     
+
       const swiper3 = new Swiper('.s3', {
         loop: true,
         slidesPerView: '4',
@@ -515,15 +488,7 @@ fantasy.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
-
             displayMovieInfo(result, imgSrcMovie);
-
           });
         }
       });
@@ -541,11 +506,11 @@ fantasy.addEventListener("click", () => {
 animation.addEventListener("click", () => {
   swiperWrapper3.innerHTML = "";
   adaptative2.innerText = "Animation";
- 
+
   fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16', options)
     .then(response => response.json())
     .then(data => {
-    
+
       const swiper3 = new Swiper('.s3', {
         loop: true,
         slidesPerView: '4',
@@ -567,12 +532,6 @@ animation.addEventListener("click", () => {
           swiperWrapper3.appendChild(createDivImg);
 
           createDivImg.addEventListener('click', () => {
-            modalMovies.showModal();
-            imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
-            titleCard.innerText = result.title;
-            yearCard.innerText = result.release_date.substring(0, 4);
-            rateCard.innerText = result.vote_average;
-            resumeCard.innerText = result.overview;
 
             displayMovieInfo(result, imgSrcMovie);
 
@@ -587,9 +546,9 @@ animation.addEventListener("click", () => {
       console.error(err);
     });
 
-}); 
+});
 
-/*------------------- MODAL -----------------------------*/
+/*------------------- MODAL REGISTER/LOGIN -----------------------------*/
 const modalRegister = document.querySelector(".modalRegister");
 const registerBtnMenu = document.querySelector(".register");
 const signinBtnMenu = document.querySelector(".signin");
@@ -604,40 +563,38 @@ const formRegister = document.querySelector(".formRegister");
 const formLogin = document.querySelector(".formLogin");
 const login = document.querySelector(".login");
 
-registerBtnMenu.addEventListener("click", () => {
-  modalRegister.showModal();
+
+
+function switchToRegister() {
   buttonSwitchSignup.style.backgroundColor = "#C00";
-  buttonSwitchLogin.style.backgroundColor = "black";
   buttonSwitchSignup.style.borderColor = "#C00";
+  buttonSwitchLogin.style.backgroundColor = "black";
   buttonSwitchLogin.style.borderColor = "white";
   buttonSwitchLogin.style.borderWidth = "1px 1px 1px 0px";
   formLogin.style.display = "none";
   formRegister.style.display = "block";
+}
+
+
+registerBtnMenu.addEventListener("click", () => {
+  modalRegister.showModal();
+switchToRegister()
 });
 
 registerBtnMenu2.addEventListener("click", () => {
   modalRegister.showModal();
-  buttonSwitchSignup.style.backgroundColor = "#C00";
-  buttonSwitchLogin.style.backgroundColor = "black";
-  buttonSwitchSignup.style.borderColor = "#C00";
-  buttonSwitchLogin.style.borderColor = "white";
-  buttonSwitchLogin.style.borderWidth = "1px 1px 1px 0px";
-  formLogin.style.display = "none";
-  formRegister.style.display = "block";
+  switchToRegister()
 });
 
 buttonSwitchSignup.addEventListener("click", () => {
-  buttonSwitchSignup.style.backgroundColor = "#C00";
-  buttonSwitchLogin.style.backgroundColor = "black";
-  buttonSwitchSignup.style.borderColor = "#C00";
-  buttonSwitchLogin.style.borderColor = "white";
-  buttonSwitchLogin.style.borderWidth = "1px 1px 1px 0px";
-  formLogin.style.display = "none";
-  formRegister.style.display = "block";
+  switchToRegister()
 });
 
-signinBtnMenu.addEventListener("click", () => {
-  modalRegister.showModal();
+signup.addEventListener("click", () => {
+  switchToRegister()
+});
+
+function switchToLogIn() {
   buttonSwitchLogin.style.backgroundColor = "#C00";
   buttonSwitchSignup.style.backgroundColor = "black";
   buttonSwitchLogin.style.borderColor = "#C00";
@@ -645,53 +602,32 @@ signinBtnMenu.addEventListener("click", () => {
   buttonSwitchSignup.style.borderWidth = "1px 0px 1px 1px";
   formLogin.style.display = "block";
   formRegister.style.display = "none";
+}
+
+signinBtnMenu.addEventListener("click", () => {
+  modalRegister.showModal();
+  switchToLogIn()
 });
 
 signinBtnMenu2.addEventListener("click", () => {
   modalRegister.showModal();
-  buttonSwitchLogin.style.backgroundColor = "#C00";
-  buttonSwitchSignup.style.backgroundColor = "black";
-  buttonSwitchLogin.style.borderColor = "#C00";
-  buttonSwitchSignup.style.borderColor = "white";
-  buttonSwitchSignup.style.borderWidth = "1px 0px 1px 1px";
-  formLogin.style.display = "block";
-  formRegister.style.display = "none";
+  switchToLogIn()
 });
 
 buttonSwitchLogin.addEventListener("click", () => {
-  buttonSwitchLogin.style.backgroundColor = "#C00";
-  buttonSwitchSignup.style.backgroundColor = "black";
-  buttonSwitchLogin.style.borderColor = "#C00";
-  buttonSwitchSignup.style.borderColor = "white";
-  buttonSwitchSignup.style.borderWidth = "1px 0px 1px 1px";
-  formLogin.style.display = "block";
-  formRegister.style.display = "none";
+  switchToLogIn()
 
 });
 
-signup.addEventListener("click", () => {
-  buttonSwitchSignup.style.backgroundColor = "#C00";
-  buttonSwitchLogin.style.backgroundColor = "black";
-  buttonSwitchSignup.style.borderColor = "#C00";
-  buttonSwitchLogin.style.borderColor = "white";
-  buttonSwitchLogin.style.borderWidth = "1px 1px 1px 0px";
-  formLogin.style.display = "none";
-  formRegister.style.display = "block";
-});
+
 
 login.addEventListener("click", () => {
-  buttonSwitchLogin.style.backgroundColor = "#C00";
-  buttonSwitchSignup.style.backgroundColor = "black";
-  buttonSwitchLogin.style.borderColor = "#C00";
-  buttonSwitchSignup.style.borderColor = "white";
-  buttonSwitchSignup.style.borderWidth = "1px 0px 1px 1px";
-  formLogin.style.display = "block";
-  formRegister.style.display = "none";
+  switchToLogIn()
 
 });
 
 
-  
+
 
 
 closeModal.addEventListener("click", () => {
