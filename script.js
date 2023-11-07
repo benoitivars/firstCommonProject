@@ -35,12 +35,20 @@ const imgMovieModal = document.querySelector(".imgMovieModal");
 
 
 function displayMovieInfo(result, imgSrcMovie) {
-
   modalMovies.showModal();
+
+  /* initialiser le Card */
+  titleCard.innerText = "";
+  yearCard.innerText = "";
+  rateCard.innerText = "";
+  resumeCard.innerText = "";
+  genreCard.innerText = "";
+  castCard.innerText = "";
+
   imgMovieModal.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
   titleCard.innerText = result.title;
   yearCard.innerText = result.release_date.substring(0, 4);
-  rateCard.innerText = result.vote_average;
+  rateCard.innerText = result.vote_average.toFixed(1);
   resumeCard.innerText = result.overview;
 
 
@@ -122,7 +130,7 @@ buttonSearch.addEventListener("click", function (e) {
 
 
 
-/*  -----------------SWIPER2 */
+/*  -----------------SWIPER2 ---------------------*/
 
 
 /* image et modal  */
@@ -136,7 +144,7 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
         const createDivImg = document.createElement("div");
         createDivImg.className = "swiper-slide";
         const createImg = document.createElement("img");
- 
+        createImg.src = `https://image.tmdb.org/t/p/w500${imgSrcMovie}`;
         createDivImg.appendChild(createImg);
         swiperWrapper2.appendChild(createDivImg);
 
@@ -149,41 +157,40 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
         
         createDivImg.addEventListener('mouseover', () => {
           
-        
           createDiv.innerHTML ="";
 
           const createPTitle = document.createElement("p");
           createPTitle.innerText = result.title;
           createPTitle.className="titleHover";
           createDiv.appendChild(createPTitle);
-          
 
-          
           const createPYear = document.createElement("p");
           createPYear.innerText = result.release_date.substring(0, 4);
           createPYear.className="yearHover";
           createDiv.appendChild(createPYear);
           
 
-          /* fetch(`https://api.themoviedb.org/3/movie/${result.id}?language=en-US&append_to_response=credits`, options)
+
+          const createPGenre = document.createElement("p");
+          createDiv.appendChild(createPGenre);
+          fetch(`https://api.themoviedb.org/3/movie/${result.id}?language=en-US&append_to_response=credits`, options)
+          
           .then(response => response.json())
           .then(movieData => {
             if (createDiv.querySelector(".genreHover")) {
               // Vérifier si l'élément de genre existe déjà
               return;
             }
-            const createPGenre = document.createElement("p");
-            const genreNames = movieData.genres.map(genre => genre.name);
+            
+            const genreNames = movieData.genres.map(genre => genre.name); /* creer un tableau et prendre l'element name  */
             createPGenre.innerText = genreNames.join(', ');
             createPGenre.className = "genreHover";
             
-            createDiv.appendChild(createPGenre);
+            
           })
           .catch(err => {
             console.error(err);
-          }); */
-      
-       
+          });   
 
         const createImgHover = document.createElement("img");
         createImgHover.src = "images/StarRed.svg";
@@ -195,9 +202,6 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
         createPRate.innerText = result.vote_average.toFixed(1);
         createPRate.className="rateHover";
         createDiv.appendChild(createPRate);
-        
-
-          
           
         createDivImg.appendChild(createDiv);
           createDiv.className = "movieHover";
@@ -221,7 +225,7 @@ fetch('https://api.themoviedb.org/3/movie/now_playing', options)
 
 
 
-/*  -----------------SWIPER3------------------------------ */
+/*-----------------SWIPER3------------------------------*/
 const comedy = document.querySelector(".comedy");
 const drama = document.querySelector(".drama");
 const action = document.querySelector(".action");

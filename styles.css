@@ -1,3 +1,5 @@
+/* FONTS */
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Barlow:wght@300;400;700;800&family=Inria+Sans:wght@300;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -22,7 +24,7 @@ a {
   color: inherit;
 }
 
-/* FONTS */
+
 
 
 
@@ -133,12 +135,16 @@ input {
 
 /* STYLES FOR SWIPERS P */
 
- .swiper1 p, .swiper2 p, .swiper3 p {
+ #adaptative1, .latestReleaseText, .moviesByGenreText {
   color: #fff;
   font-family: 'Inria Sans', sans-serif;
   font-size: 14px;
   font-weight: 300;
-}
+} 
+
+/* HOVER MOVIE */
+
+
 
 .movieHover {
   position: absolute;
@@ -152,6 +158,7 @@ input {
 }
 
 .titleHover {
+margin-bottom: 23px;
 margin-top: 76px;
 color: #FFF;
 font-family: Inter;
@@ -162,7 +169,7 @@ line-height: normal;
 }
 
 .yearHover {
-margin-top: 23px;
+  height: 46px;
 color: #B0B0B0;
 font-family: Inter;
 font-size: 20px;
@@ -171,6 +178,26 @@ font-weight: 700;
 line-height: normal;
 }
 
+.genreHover {
+  height: 46px;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+}
+
+.rateHover{
+margin-top: 6px;
+color: #C00;
+font-family: Inter;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
 
 
 
